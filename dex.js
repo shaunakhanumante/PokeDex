@@ -20,7 +20,12 @@ const fetchMon = (monName) => {
             pokemon['types'] = data.types;
             pokemon['image'] = data.sprites.front_default;
 
-            console.log(pokemon);
+            const nameDisplay = document.getElementById("mon-name");
+            const typeDisplay = document.getElementById("mon-type");
+            const typeSplit = pokemon.types.map(t => t.type.name).join('/');
+            nameDisplay.textContent = pokemon.name;
+            typeDisplay.textContent = `Type(s): ${typeSplit}`;
+
         })
         .catch(err => {
             console.error(err.message);
